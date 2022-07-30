@@ -1,0 +1,15 @@
+#!/bin/bash
+#set -x
+
+#if [ "" == "$1" ] || [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
+#	echo ''
+#fi
+
+dfile=$1
+#cmd=`egrep Exec $dfile | cut -d '=' -f 2`
+#echo $cmd
+#eval $cmd   # 微信应用在dock上识别的是终端 emm
+
+dbus-send --session --print-reply --dest=com.deepin.daemon.Display /com/deepin/StartManager com.deepin.StartManager.Launch string:$dfile
+
+

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "" == "$1" ] ;then
+  echo "请输入亮度"
+  exit
+fi
+
+bash wwlog "$@"
+
+brightness=`dbus-send --print-reply --type=method_call --session --dest=com.deepin.daemon.Display /com/deepin/daemon/Display com.deepin.daemon.Display.GetBrightness `
+
+for name in `echo $brightness |awk -F 'dict entry' '{for(i=1;i<=NF;i++)print $i}' `
+do
+    name=`echo $name |grep '"' |sed 's/"//g'`
+    if [ "$name" != "" ];then
+        echo $name
+        dbus-send --print-reply --type=method_call --session --dest=com.deepin.daemon.Display /com/deepin/daemon/Display com.deepin.daemon.Display.SetBrightness string:$name double:$1
+    fi
+done

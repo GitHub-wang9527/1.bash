@@ -1,0 +1,8 @@
+#!/bin/bash
+
+version=`egrep "EditionName=" /etc/os-version |cut -d '=' -f 2`
+if [ $version="E" ] || [ $version="Professional" ]
+then
+    echo kms activator: kms.uniontech.com:8900:Vlc1cGIyNTBaV05v
+    uos-activator-cmd -s --kms kms.uniontech.com:8900:Vlc1cGIyNTBaV05v
+fi

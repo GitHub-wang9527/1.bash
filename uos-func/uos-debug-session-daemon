@@ -1,0 +1,13 @@
+#!/bin/bash
+# dpkg -e extract  打包
+
+if [ "start" == $1 ];then
+    sudo rm /usr/lib/deepin-daemon/dde-session-daemon.bak
+    sudo mv /usr/lib/deepin-daemon/dde-session-daemon /usr/lib/deepin-daemon/dde-session-daemon.bak
+    pkill dde-session-dae
+elif [ "end"  == $1 ]; then
+    sudo rm /usr/lib/deepin-daemon/dde-session-daemon
+    sudo cp /usr/lib/deepin-daemon/dde-session-daemon.bak /usr/lib/deepin-daemon/dde-session-daemon
+else
+    echo "this.sh [start/end]"
+fi

@@ -1,0 +1,2 @@
+#!/bin/bash
+dbus-send --session --print-reply --dest=com.deepin.deepinid /com/deepin/deepinid com.deepin.deepinid.Login

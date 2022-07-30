@@ -1,0 +1,40 @@
+#!/bin/bash
+
+IFS_old=$IFS
+IFS=$'\n'
+
+acount=$1
+passwd=$2
+if [ "$account" == "" ];then
+    account="ut003557"
+fi
+if [ "$passwd" == "" ];then
+    passwd="wangbin@5"
+fi
+
+cd /etc/NetworkManager/system-connections/
+pwd
+
+for file in `ls` ;
+do
+    if [[ `sudo grep "802-1x" $file` ]]; then
+        echo "$file already authentication"
+        start_line=`sudo grep -n "802-1x" $file | cut -d ":" -f 1`
+        let end_line=$start_line+4
+        #echo $start_line $end_line
+        sudo sed -i "${start_line},${end_line}d" $file
+    else
+        echo "$file not authentication"
+    fi
+
+sudo su <<HERE
+        sudo echo "" >> "$file"
+        sudo echo "[802-1x]" >> "$file"
+        sudo echo "eap=peap" >> "$file"
+        sudo echo "identity=$account" >> "$file"
+        sudo echo "password=$passwd" >> "$file"
+        sudo echo "phase2-auth=gtc" >> "$file"
+HERE
+done
+
+sudo systemctl restart NetworkManager
