@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# 删除[startline,endline]行之间的数据，不包括startline、endline
+
+startkey=$1
+endkey=$2
+file=$3
+
+startline=`grep -n "$startkey"  $file | cut -d ":" -f 1`
+endline=0
+
+for line in `grep -n "$endkey" $file | cut -d ":" -f 1`; do
+	if [ $startline -lt $line ]				# -eq等于 -ne不等于 -gt大于 -lt小于
+	then
+		endline=$line
+		break
+	fi
+done
+
+echo $startline $endline
+# 删除[startline,endline]行之间的数据，不包括startline、endline
+deleteline=$((endline-1))
+while [ $deleteline -gt $startline ]
+do
+	sed -i "${deleteline}d"  $file
+	deleteline=$((deleteline-1))
+done

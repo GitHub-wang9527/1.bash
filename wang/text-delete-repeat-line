@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# 文本去重复
+# 	删除重复行；判重时，忽略行头行尾空格
+file=$1
+echo $file
+
+declare -A xx=([" "]=0);    # map表
+declare -a repeatlines      # 数组
+linenumber=0
+while IFS= read -r line ;
+do 
+	((linenumber++))
+	key=`echo $line`;
+	if [[ x${xx[\"$key\"]} = x"" ]];then 
+		echo "$line";
+	else
+		repeatlines+=($linenumber)
+	fi;
+ 
+	xx[\"$key\"]=$line; 
+done < $file
+
+# 倒叙遍历删除重复行
+
+len=${#repeatlines[@]}	# 获取数组长度 还有一种方式 len=${#array[*]}
+for ((i=$len - 1;i>=0;i--))
+do
+    line="${repeatlines[$i]}"
+    sed -i "${line}d" $file 			# 必须是双引号
+done
+
+exit
+
+# 读取文件，保留空格
+# while IFS= read -r line ;do key=`echo $line`;done
+# while read line ;echo $line ;done
+
+#line=${line#* }; 
+#line=${line%%* };
