@@ -1,0 +1,89 @@
+#!/bin/bash
+
+if [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
+	echo 'egrep -R -n knowledge ../../../4.笔记 | ww-format-knowledge'
+	exit
+fi
+
+function subtitle() {
+    echo -e "\033[42;37m $1 \033[0m"
+}
+function maintitle() {
+    echo
+    echo
+    echo -e "\033[41;37m $1 \033[0m"
+}
+
+function echo-textblock() {
+    pathname=$1
+    existlines=$2
+    splitlines=(`grep -n $3 $pathname |cut -d ':' -f 1`)
+    maintitle $pathname
+
+    # echolinemap  key起始行 value尾行
+    declare -A echolinemap
+
+    for line in $existlines
+    do
+        # 倒序
+        idx=${#splitlines[@]}
+        idx=`expr $idx - 1`
+        for (( i = idx ; i > -1; i-- )); do
+            startline=${splitlines[$i]}
+            # 不符合条件 继续
+            if [ $startline -gt $line ]; then
+                continue
+            fi
+
+            # 符合条件 跳出循环
+            if [ $i -eq $idx ];then
+                # 文件末尾
+                endline=`wc -l $pathname | cut -d ' ' -f 1 `
+                endline=`expr $endline + 1`           # 如果末尾没有换行的话 wc会少统计一行 所以此处+1
+                echolinemap[$startline]=$endline
+            else
+                endline=${splitlines[$i+1]}
+                endline=`expr $endline - 1`
+                echolinemap[$startline]=$endline
+            fi
+
+            break
+        done
+    done
+
+    for sline in ${!echolinemap[@]}
+    do
+        eline=${echolinemap[$sline]}
+        subtitle "[$sline,$eline] $pathname"
+        sed -n ''$sline,$eline' p' $pathname
+    done
+}
+
+
+declare -A exist;    # map表 ，key文本路径 value匹配的文本出现的行号
+while read -r line || [[ -n ${line} ]];
+do
+  filepath=`echo  $line | cut -d ":" -f 1`
+  linenum=`echo  $line | cut -d ":" -f 2`
+
+  preline=${exist[$filepath]}               # map取值
+  exist[$filepath]="$preline $linenum"  # map赋值
+done
+
+
+for file in ${!exist[@]}
+do
+    lines=${exist[$file]}
+   # echo $file
+    if [[ `grep "knowledge" $file` ]]; then
+        #echo rrr
+        echo-textblock $file "$lines" "knowledge"
+    elif [ `grep "^$" $file |wc -l` -ne 0 ]; then
+        #echo ooo
+        echo-textblock $file "$lines" "^$"
+    else
+        #  echo hhh
+        maintitle $file
+        cat -n $file
+    fi
+done
