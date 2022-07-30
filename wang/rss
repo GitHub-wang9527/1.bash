@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# TODO 去除docker服务的开机自启 在本脚本中启动
+
+sudo docker restart rsshub
+~/wang/10.AppImage/rss/fluent-reader/Fluent.Reader.1.0.2.AppImage
+
