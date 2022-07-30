@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# TODO study
+# https://zgserver.com/bash-23.html
+
+# 使用方法
+# 在uos-set-brightn脚本中 添加如下一行
+#   bash wwlog "$@"
+# uos-set-brightn .88 ，会在日志文件中添加如下记录 2022-07-30 08:27:22 uos-set-brightn .88
+
+caller=$(ps -o comm= $PPID)
+time_str=`date +'%Y-%m-%d %H:%M:%S'`
+
+echo "$time_str $caller $@" >> "$HOME/.config/wlog.log"
