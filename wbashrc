@@ -1,0 +1,44 @@
+#!/bin/bash
+
+source ~/wang/wwork/1.bin/wbashrc_private
+
+alias ll="ls -alh"
+
+alias kvm="sudo virt-manager"
+alias goland="~/wang/10.AppImage/GoLand-2021.1.1/bin/goland.sh >/dev/null 2>&1"
+alias goland-wwork="goland ~/wwork/"
+alias wework="uos-open-desktopfile /opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop"
+alias wechat="uos-open-desktopfile /opt/apps/com.qq.weixin.deepin/entries/applications/com.qq.weixin.deepin.desktop"
+alias qq="uos-open-desktopfile /opt/apps/com.qq.im.deepin/entries/applications/com.qq.im.deepin.desktop"
+alias sunflower="uos-open-desktopfile /opt/apps/com.oray.sunlogin.client/entries/applications/com.oray.sunlogin.client.desktop"
+
+alias wtools="uos-open-desktopfile /usr/share/applications/wtools.desktop "
+alias note="gedit ~/wwork/4.笔记/00.note.tmp.txt"
+alias todo="gedit ~/wwork/4.笔记/todo.txt"
+alias pms="xdg-open https://pms.uniontech.com/my-bug-assignedTo.html"
+alias oa="xdg-open https://oa.uniontech.com/wui/index.html\?v\=1653016220862\#/\?_key\=np5fj4"
+
+alias cd-bin="cd ~/wwork/1.bin/1.bash/"
+alias cd-go-depend="cd /usr/share/gocode/src/github.com/linuxdeepin"
+alias open=dde-open
+alias open-test="gedit ~/wwork/1.bin/1.bash/exapmle/test.sh"
+alias open-weblink="gedit ~/wwork/weblink-链接.txt"
+alias google-bookmarket="cat \"$(find ~/.config -name Bookmarks)\""
+alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show"
+
+# 环境变量
+# go env
+export GOPATH=/home/wangbin/go:/usr/share/gocode
+# export GOPROXY=https://goproxy.cn
+export PATH=$PATH:~/wang/wwork/1.bin/1.bash/uos-func
+export PATH=$PATH:~/wang/wwork/1.bin/1.bash/wang
+export PATH=$PATH:~/wang/wwork/1.bin/1.bash/exapmle
+export PATH=$PATH:~/wang/wwork/1.bin/9.whz
+export PATH=$PATH:~/zwork/bin
+
+# 设置contab编辑器为vim
+# export EDITOR=/usr/bin/vim
+
+
+
+
