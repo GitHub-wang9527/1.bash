@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "-h" == "$1" ] || [ "" == "$1" ];then
+    echo "${0##*/} extract"
+    echo "extract is dir"
+    exit
+fi
+
+dpkg-deb -b extract dde.deb

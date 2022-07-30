@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $1 =~ ".tar.gz" ]]
+then
+    tar zxvf $1
+    echo "解压" tar zxvf $1
+else
+    echo "请输入tar.gz文件"
+fi

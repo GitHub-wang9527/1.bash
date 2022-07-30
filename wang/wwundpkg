@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "-h" == "$1" ] || [ "" == "$1" ];then
+    echo "${0##*/} [dir/a.deb]"
+    exit
+fi
+
+rm -rf extract
+mkdir -p extract/DEBIAN
+dpkg -X ./$1 extract
+dpkg -e ./$1 extract/DEBIAN
+
+# 压缩包  压缩文件夹extract为 dde.deb包
+# dpkg-deb -b extract dde.deb

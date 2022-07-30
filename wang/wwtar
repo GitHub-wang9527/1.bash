@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# TODO 基本没用过
+
+tarname=$1
+if [ -d $1 ];then
+    tarname=${tarname%/*}.tar.gz
+fi
+tar zcvf $tarname $1
+echo "压缩" zcvf $tarname $1

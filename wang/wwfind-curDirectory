@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "" == "$1" ] || [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
+	echo ww-find-pwd "[key]"
+	exit
+fi
+
+echo 'find  "`pwd`/" -name "*$1*"'
+find  "`pwd`/" -name "*$1*"
