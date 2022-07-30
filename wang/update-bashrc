@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "" == "$1" ] || [ "" == "$2" ] ;then
+	echo ${0##*/} "[bashCmd bashFile]"
+	exit 1
+fi
+
+bashCmd=$1
+bashFile=$2
+echo $bashCmd $bashFile
+if [ `grep -c "$bashCmd" $bashFile` -eq '0' ];then
+    echo $bashCmd >> $bashFile
+fi

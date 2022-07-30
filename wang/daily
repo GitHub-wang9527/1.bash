@@ -1,0 +1,22 @@
+#!/bin/bash
+# 打开月度工作日志文件
+# TODO daily 8    Failed
+
+if [ "" == "$1" ] || [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
+	echo '请输入月份'
+	exit 1
+fi
+
+dailypath='/home/wangbin/wwork/3.工作文件/1.日报/2022'
+ls $dailypath
+for file in `ls $dailypath`
+do
+  idx=$(echo $file | cut -d '-' -f 1)
+  echo $file "[ $1 -eq $idx ]"
+	if [[ $1 -eq $idx ]] ; then
+    echo "$dailypath/$file"
+    gedit "$dailypath/$file"
+  fi
+
+done
+

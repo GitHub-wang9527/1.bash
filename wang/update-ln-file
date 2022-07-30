@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ "-h" == "$1" ] || [ "" == "$1" ];then
+    echo "please input your disk path"
+    echo "Example: ${0##*/} /media/wangbin/WB1T"
+    exit
+fi
+if [ ! -d "$1" ]; then
+    echo "$1 don't exist"
+    exit
+fi
+
+rm -f ~/disk
+ln -s $1 ~/disk
+
+# 只有工作机存在的目录
+rm -f ~/zwork ~/vmware ~/workspace;
+if [ -d ~/disk/VMMachine ] ;then
+    ln -s ~/disk/VMMachine ~/vmware
+fi
+if [ -d ~/disk/zwork ] ;then
+    ln -s ~/disk/zwork ~/zwork
+fi
+if [ -d ~/disk/workspace ] ;then
+    ln -s ~/disk/workspace ~/workspace
+fi
+
+rm -f ~/wwork ~/wang;
+ln -s ~/disk/wang/ ~/wang
+ln -s ~/disk/wang/wwork ~/wwork
+
+# QV2ray 配置
+rm  ~/.config/qv2ray
+ln -s ~/wang/10.AppImage/v2Ray/qv2ray/config ~/.config/qv2ray
+
+# Fluent.Reader 配置文件
+rm ~/.config/fluent-reader
+ln -s ~/wang/10.AppImage/rss/fluent-reader/config ~/.config/fluent-reader

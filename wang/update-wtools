@@ -1,0 +1,12 @@
+#!/bin/bash
+
+workdir=`pwd`
+cd ~/wang/code/git/my/wtools
+
+dpkg-buildpackage -us -uc -sa -b -j6
+sudo dpkg -i ../wtools*.deb
+
+debian/rules clean
+rm ../wtools*1.0.0*.*
+
+cd $workdir
