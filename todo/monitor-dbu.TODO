@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tmpout="$HOME/.cache/dbus-monitor.tmp.log"
+echo "" > $tmpout
+sudo dbus-monitor --system >> $tmpout &
+echo "1"
+dbus-monitor --session >> $tmpout &
+echo "2"
+tail -f $tmpout

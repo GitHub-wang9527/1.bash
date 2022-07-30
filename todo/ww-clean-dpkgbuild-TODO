@@ -1,0 +1,41 @@
+#!/bin/bash
+
+declare -A debianPaths=()
+
+function doloop_readdir(){
+    echo doloop $1
+    for file in `ls $1`
+    do
+        if [ -d $1"/"$file ]
+        then
+            pathname=$1"/"$file
+            if [ "debian" == $file ];then
+                echo  "contain debian" $pathname
+                debianPaths[\"$1\"]=$1
+                break
+            fi
+
+        doloop_readdir $pathname                # 执行完后 $file会被改变
+        rm -f *.deb *.udeb *.changes *.buildinfo *.dsc
+        # rm -fr .idea
+        fi
+    done
+}
+
+#读取第一个参数
+doloop_readdir $1
+echo ${!debianPaths[@]}
+
+# ${debianPaths[@]}      value
+# ${!debianPaths[@]}     key
+for pathname in ${debianPaths[@]}
+do
+    cd $pathname
+    if [ -f "./debian/rules" ]; then
+        echo "--------------------------"
+        echo "clean"
+        pwd
+        echo "--------------------------"
+        ./debian/rules clean
+    fi
+done
