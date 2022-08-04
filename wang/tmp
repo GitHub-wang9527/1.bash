@@ -2,11 +2,11 @@
 
 # 在wwork目录中创建一个临时文件
 
-path="$HOME/wwork/"
+path="$HOME/wwork"
 if [ ! -d $path ] ;then
-  echo "not exist $path"
+    echo "not exist $path"
 fi
 
-name="`env LANG=en_US.UTF-8 date +"%Y%m%d"`-$1.txt"
+name="tmp-`env LANG=en_US.UTF-8 date +"%Y%m%d"`-$1.txt"
 echo $path/$name
 gedit $path/$name

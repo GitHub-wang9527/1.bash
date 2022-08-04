@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
-	echo 'egrep -R -n knowledge ../../../4.笔记 | ww-format-knowledge'
-	exit
+    echo "egrep -R -n knowledge ../../../4.笔记 | ${0##*/}"
+    exit
 fi
 
 function subtitle() {
@@ -63,13 +63,12 @@ function echo-textblock() {
 declare -A exist;    # map表 ，key文本路径 value匹配的文本出现的行号
 while read -r line || [[ -n ${line} ]];
 do
-  filepath=`echo  $line | cut -d ":" -f 1`
-  linenum=`echo  $line | cut -d ":" -f 2`
+    filepath=`echo  $line | cut -d ":" -f 1`
+    linenum=`echo  $line | cut -d ":" -f 2`
 
-  preline=${exist[$filepath]}               # map取值
-  exist[$filepath]="$preline $linenum"  # map赋值
+    preline=${exist[$filepath]}               # map取值
+    exist[$filepath]="$preline $linenum"  # map赋值
 done
-
 
 for file in ${!exist[@]}
 do

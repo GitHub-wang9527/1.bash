@@ -4,19 +4,19 @@
 #      让数字按顺序重新命名
 
 if [ "" == "$1" ] || [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
-	echo ${0##*/} [filename]            # 字符串截取 左起，找到最后一个'/'字符，返回其后面的内容（不含'/'）
-	exit
+    echo ${0##*/} [filename]            # 字符串截取 左起，找到最后一个'/'字符，返回其后面的内容（不含'/'）
+    exit
 fi
 
 let index=1
 egrep -n "^knowledge-[0-9]{1,}\." $1| while read line
 do
-  lineNum=$(echo $line |cut -d ':' -f 1)
-  key=$(echo $line |cut -d ':' -f 2|cut -d '.' -f 1)
+    lineNum=$(echo $line |cut -d ':' -f 1)
+    key=$(echo $line |cut -d ':' -f 2|cut -d '.' -f 1)
 
-  sed -i "${lineNum}s/$key/knowledge-$index/" $1
-  echo sed -i "${lineNum}s/$key/knowledge-$index/" $1
-  let index+=1
+    sed -i "${lineNum}s/$key/knowledge-$index/" $1
+        echo sed -i "${lineNum}s/$key/knowledge-$index/" $1
+    let index+=1
 done
 
 

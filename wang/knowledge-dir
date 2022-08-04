@@ -5,15 +5,15 @@ wworkdir=$(readlink -f $HOME/wwork | xargs echo)
 
 for e in `ls $wworkdir`
 do
-  path=$wworkdir/$e
-  # 排除文件 保留文件夹
-  if [[ ! -d $path ]];then
-    continue
-  fi
+    path=$wworkdir/$e
+    # 排除文件 保留文件夹
+    if [[ ! -d $path ]];then
+        continue
+    fi
 
-  if [[ $path =~ "ln-dir" ]] || [[ $path =~ "截图" ]];then
-    continue
-  fi
+    if [[ $path =~ "ln-dir" ]] || [[ $path =~ "截图" ]];then
+        continue
+    fi
 
-  echo $path
+     echo $path
 done

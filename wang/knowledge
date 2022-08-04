@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ $# -eq 0 ];then
-  echo "knowledget k1 k2 k3   关键行必须同时满足n个key  且egrep本省同时支持'A|B'"
-  exit
+    echo "${0##*/} k1 k2 k3   关键行必须同时满足n个key  且egrep本身体同时支持'A|B'"
+    exit
 fi
 
 tmpfile="${HOME}/.cache/knowledgetmp"
@@ -12,31 +12,30 @@ cat /dev/null > $tmpfile
 # cat /dev/null > $tmpfile                    文件置空
 
 
-paths=`bash /media/wangbin/WB1T/wang/wwork/1.bin/1.bash/wang/knowledge-dir`
+paths=`bash $HOME/wang/wwork/1.bin/1.bash/wang/knowledge-dir`
 
 for s_dir in $paths ; do
-	egrep -R -n "$1" "$s_dir" >> $tmpfile
+    egrep -R -n -E "$1" "$s_dir" >> $tmpfile
 done
 
 for arg in $*
 do
-	if [ $arg == $1 ];then
-		continue
-	fi
+    if [ $arg == $1 ];then
+        continue
+    fi
 
-	echo "$(egrep $arg $tmpfile)" > $tmpfile     # echo egrep的结果 保留换行
+    echo "$(egrep $arg $tmpfile)" > $tmpfile     # echo egrep的结果 保留换行
 done
 
 if [ $(cat $tmpfile | wc -l) -eq 1 ] ;then
-	filename=`cat $tmpfile |cut -d ':' -f 1`
-	if [ "$filename" == "" ]; then
-		echo "请减少关键字"
-	else
-		#gedit $filename    # 一个脚本只做一件事 这个脚本不应该有打开的功能
-		cat $tmpfile
-	fi
+    filename=`cat $tmpfile |cut -d ':' -f 1`
+    if [ "$filename" == "" ]; then
+        echo "请减少关键字"
+    else
+        cat $tmpfile
+    fi
 
 else
-	cat $tmpfile
+    cat $tmpfile
 fi
 

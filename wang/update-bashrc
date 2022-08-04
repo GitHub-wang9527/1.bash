@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ "" == "$1" ] || [ "" == "$2" ] ;then
-	echo ${0##*/} "[bashCmd bashFile]"
-	exit 1
+    echo ${0##*/} "[bashCmd bashFile]"
+    exit 1
 fi
 
 bashCmd=$1

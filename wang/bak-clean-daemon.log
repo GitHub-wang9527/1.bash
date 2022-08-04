@@ -1,6 +1,6 @@
 #!/bin/bash
 
 sudo su <<HERE
-	cp /var/log/daemon.log "/var/log/daemon.log.`date +%s`"
-	echo '' > /var/log/daemon.log
+    cp /var/log/daemon.log "/var/log/daemon.log.`date +%s`"
+    echo '' > /var/log/daemon.log
 HERE

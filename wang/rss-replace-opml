@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ "-h" == "$1" ] || [ "" == "$1" ];then
+if  [ "" == "$1" ] || [ "-h" == "$1" ] || [ "" == "$1" ];then
     # 替换opml文件中的http头 https:/*/  为参数1
-    echo "ww-replace-opml [127.0.0.1:1200/rsshub.com]"
-    return
+    echo "${0##*/} [127.0.0.1:1200]"
+    exit
 fi
 
 tmpip=`egrep "/bilibili/user/video" ~/Desktop/rss订阅.opml |awk -F "/bilibili/user/video" '{print $1}' |awk -F "http://" '{print $2}'`

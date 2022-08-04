@@ -1,7 +1,13 @@
 #!/bin/bash
 
 # 文本去重复
-# 	删除重复行；判重时，忽略行头行尾空格
+
+if  [ "" == "$1" ] || [ "-h" == "$1" ] || [ "" == "$1" ];then
+    # 替换opml文件中的http头 https:/*/  为参数1
+    echo "${0##*/} [filename]"
+    exit
+fi
+
 file=$1
 echo $file
 
@@ -10,24 +16,24 @@ declare -a repeatlines      # 数组
 linenumber=0
 while IFS= read -r line ;
 do 
-	((linenumber++))
-	key=`echo $line`;
-	if [[ x${xx[\"$key\"]} = x"" ]];then 
-		echo "$line";
-	else
-		repeatlines+=($linenumber)
-	fi;
+    ((linenumber++))
+    key=`echo $line`;
+    if [[ x${xx[\"$key\"]} = x"" ]];then 
+        echo "$line";
+    else
+        repeatlines+=($linenumber)
+    fi;
  
-	xx[\"$key\"]=$line; 
+    xx[\"$key\"]=$line; 
 done < $file
 
 # 倒叙遍历删除重复行
 
-len=${#repeatlines[@]}	# 获取数组长度 还有一种方式 len=${#array[*]}
+len=${#repeatlines[@]}    # 获取数组长度 还有一种方式 len=${#array[*]}
 for ((i=$len - 1;i>=0;i--))
 do
     line="${repeatlines[$i]}"
-    sed -i "${line}d" $file 			# 必须是双引号
+    sed -i "${line}d" $file             # 必须是双引号
 done
 
 exit

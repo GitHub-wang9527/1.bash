@@ -12,24 +12,24 @@
 # TODO
 # 遇到一个问题 某些dbgsym包的版本和源列表中的主包对应不上
 # 即使删除商店源也不行
-# 		因为本地已安装的主包已经缺失对应的dbgsym包
-#		比如libgdal20=2.4.0+dfsg-1+b1
-#			libgdal20-dbgsym : 依赖: libgdal20 (= 2.4.0+dfsg-1) 但是 2.4.0+dfsg-1+b1 正要被安装
+#    因为本地已安装的主包已经缺失对应的dbgsym包
+#    比如libgdal20=2.4.0+dfsg-1+b1
+#         libgdal20-dbgsym : 依赖: libgdal20 (= 2.4.0+dfsg-1) 但是 2.4.0+dfsg-1+b1 正要被安装
 packageSource=$(apt list |grep dbgsym | cut -d '/' -f 1)
 packageSource="s $packageSource s"
 packageListFile=$HOME/package.list
 echo '' > $packageListFile
 apt list | grep "已安装" | while read -r line
 do
-        package="$(echo $line | cut -d '/' -f 1)-dbgsym"
-        # if [[ "$packageSource" =~ "$package" ]];              dde-dbgsym 会被误判
-        # if [ "$packageSource" == "*\ $package" ]];
-        echo $packageSource | grep -q " $package"
-        if [ $? -eq 0 ];
-        then
-                        # echo contain $package
-                echo $package >> $packageListFile
-        fi
+package="$(echo $line | cut -d '/' -f 1)-dbgsym"
+    # if [[ "$packageSource" =~ "$package" ]];              dde-dbgsym 会被误判
+    # if [ "$packageSource" == "*\ $package" ]];
+    echo $packageSource | grep -q " $package"
+    if [ $? -eq 0 ];
+    then
+         # echo contain $package
+        echo $package >> $packageListFile
+    fi
 done
 echo sudo apt install -y -f `cat $packageListFile`
 sudo apt install -y -f `cat $packageListFile`

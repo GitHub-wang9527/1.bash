@@ -3,9 +3,9 @@
 ip=""
 for e in `hostname -I`
 do
-  if [[ "$e" =~ "10.4" ]];then
-    ip=$e
-  fi
+    if [[ "$e" =~ "10.4" ]];then
+        ip=$e
+    fi
 done
 
 

@@ -10,8 +10,8 @@ sysWallpaper=/usr/share/wallpapers/deepin
 sudo rm -f $sysWallpaper/*
 for file in `ls $pixpath` ;
 do
-	#sudo ln -s $pixpath/$file $sysWallpaper/$file
-	sudo cp $pixpath/$file $sysWallpaper/$file
+    #sudo ln -s $pixpath/$file $sysWallpaper/$file
+    sudo cp $pixpath/$file $sysWallpaper/$file
 done
 
 

@@ -5,17 +5,17 @@ ip=$2
 password=$3
 
 function reset_sshkey(){
-	remote_user="$1"
-	remote_ip="$2"
+    remote_user="$1"
+    remote_ip="$2"
 
-	echo "ssh-keygen -f \"/home/$remote_user/.ssh/known_hosts\" -R \"$remote_ip\" "
-	ssh-keygen -f "/home/$remote_user/.ssh/known_hosts" -R "$remote_ip" 
+    echo "ssh-keygen -f \"/home/$remote_user/.ssh/known_hosts\" -R \"$remote_ip\" "
+    ssh-keygen -f "/home/$remote_user/.ssh/known_hosts" -R "$remote_ip" 
 }
 
 reset_sshkey $hostname $ip
 
 # -o: ssh或scp的一个选项, StrictHostKeyChecking=no表示在第一次主机认证的时候, 自动接收远端主机密钥.
-# 		添加后，就不会弹出yes/no的选项了
+#         添加后，就不会弹出yes/no的选项了
 sshpass -p $password ssh -o StrictHostKeyChecking=no $hostname@$ip
 
 

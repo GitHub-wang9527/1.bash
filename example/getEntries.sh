@@ -10,8 +10,8 @@ txt=$HOME/Desktop/dock.entries.txt
 echo '' > $txt
 for path in `echo $dbuspath | awk -F ' ' '{for(i=1;i<=NF;i++)print $i}' `
 do
-  echo '' >> $txt
-  dbus-send --print-reply --session --dest=com.deepin.dde.daemon.Dock $path org.freedesktop.DBus.Properties.GetAll string:com.deepin.dde.daemon.Dock.Entry >> $txt
+    echo '' >> $txt
+    dbus-send --print-reply --session --dest=com.deepin.dde.daemon.Dock $path org.freedesktop.DBus.Properties.GetAll string:com.deepin.dde.daemon.Dock.Entry >> $txt
 done
 
 
