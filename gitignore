@@ -1,0 +1,9 @@
+# 使用方法
+# 	git config --global core.excludesfile ~/wwork/1.bin/1.bash/gitignore 
+#   全局起作用
+
+/.idea/
+/.code/
+*.user
+/build*/
+
