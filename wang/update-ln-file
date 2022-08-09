@@ -25,10 +25,8 @@ if [ -d ~/disk/workspace ] ;then
     ln -s ~/disk/workspace ~/workspace
 fi
 
-rm -f ~/wwork ~/wang;
+rm -f ~/wang;
 ln -s ~/disk/wang/ ~/wang
-ln -s ~/disk/wang/wwork ~/wwork
-ln -s ~/wang/code/git/my/1.bash ~/wang/wwork/1.bin/1.bash
 
 # QV2ray 配置
 rm  ~/.config/qv2ray

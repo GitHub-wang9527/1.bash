@@ -1,40 +1,40 @@
 #!/bin/bash
 
 # 脚本中使用的环境变量
-export WPath_DailyPath="${HOME}/wang/09.工作日志/3.uos/1.日报/2022"
+export WPath_DailyPath="${HOME}/wang/12.工作日志/3.uos/1.日报/2022"
 export WPath_ShellTmp="${HOME}/.cache/wang.tmp"
-export WPath_BashWangDir="$HOME/wang/wwork/1.bin/1.bash/wang"
-export WPath_WorkDir="${HOME}/wang/wwork"
-export WPath_wallpapersDir="${HOME}/wang/20.wallpper-pc"
-export WPath_WToolsDir="${HOME}/wang/code/git/my/wtools"
-export WPath_AppImage="${HOME}/wang/10.AppImage"
+export WPath_BashWangDir="$HOME/wang/01.work-ln/wbash/wang"
+export WPath_WorkDir="${HOME}/wang/01.work-ln"
+export WPath_wallpapersDir="${HOME}/wang/21.wallpper-pc"
+export WPath_WToolsDir="${HOME}/wang/03.git-code/my/wtools"
+export WPath_AppImage="${HOME}/wang/20.AppImage"
 
 # Tips: 
 #	update-ln-file 		中仍然使用了一些路径
 # 	wbashrc_private		中有些路径也需要修改
-source ~/wang/wwork/1.bin/wbashrc_private
+source ~/wang/11.private/wbashrc_private
 
 alias ll="ls -alh"
 
 alias kvm="sudo virt-manager"
 alias goland="${WPath_AppImage}/GoLand-2021.1.1/bin/goland.sh >/dev/null 2>&1"
-alias goland-wwork="goland ~/wwork/"
+alias goland-work="goland ~/01.work-ln/"
 alias wework="uos-open-desktopfile /opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop"
 alias wechat="uos-open-desktopfile /opt/apps/com.qq.weixin.deepin/entries/applications/com.qq.weixin.deepin.desktop"
 alias qq="uos-open-desktopfile /opt/apps/com.qq.im.deepin/entries/applications/com.qq.im.deepin.desktop"
 alias sunflower="uos-open-desktopfile /opt/apps/com.oray.sunlogin.client/entries/applications/com.oray.sunlogin.client.desktop"
 
 alias wtools="uos-open-desktopfile /usr/share/applications/wtools.desktop "
-alias note="gedit ~/wwork/00.note.tmp.txt"
-alias todo="gedit ~/wwork/todo.txt"
+alias note="gedit ~/wang/01.work-ln/note"
+alias todo="gedit ~/wang/01.work-ln/todo.txt"
 alias pms="xdg-open https://pms.uniontech.com/my-bug-assignedTo.html"
 alias oa="xdg-open https://oa.uniontech.com/wui/index.html\?v\=1653016220862\#/\?_key\=np5fj4"
 
 alias cd-bin="cd ~/wwork/1.bin/1.bash/"
 alias cd-go-depend="cd /usr/share/gocode/src/github.com/linuxdeepin"
 alias open=dde-open
-alias open-test="gedit ~/wwork/1.bin/1.bash/exapmle/test.sh"
-alias open-weblink="gedit ~/wwork/4.note/weblink-链接.md"
+alias open-test="gedit ~/wang/01.work-ln/wbash/exapmle/test.sh"
+alias open-weblink="gedit ~/wang/01.work-ln/weblink-链接.md"
 alias google-bookmarket="cat \"$(find ~/.config -name Bookmarks)\""
 alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show"
 
@@ -43,10 +43,9 @@ alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /
 # go env
 export GOPATH=/home/wangbin/go:/usr/share/gocode
 # export GOPROXY=https://goproxy.cn
-export PATH=$PATH:~/wang/wwork/1.bin/1.bash/uos-func
-export PATH=$PATH:~/wang/wwork/1.bin/1.bash/wang
-export PATH=$PATH:~/wang/wwork/1.bin/1.bash/exapmle
-export PATH=$PATH:~/wang/wwork/1.bin/9.whz
+export PATH=$PATH:~/wang/01.work-ln/wbash/uos-func
+export PATH=$PATH:~/wang/01.work-ln/wbash/wang
+export PATH=$PATH:~/wang/01.work-ln/wbash/example
 export PATH=$PATH:~/zwork/bin
 
 # 设置contab编辑器为vim

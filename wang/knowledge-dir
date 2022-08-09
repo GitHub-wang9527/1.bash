@@ -11,7 +11,7 @@ do
         continue
     fi
 
-    if [[ $path =~ "ln-dir" ]] || [[ $path =~ "截图" ]];then
+    if [[ $path =~ "zbash" ]] ;then
         continue
     fi
 
