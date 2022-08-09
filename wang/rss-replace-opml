@@ -9,5 +9,5 @@ fi
 tmpip=`egrep "/bilibili/user/video" ~/Desktop/rss订阅.opml |awk -F "/bilibili/user/video" '{print $1}' |awk -F "http://" '{print $2}'`
 ip=`echo $tmpip | cut -d ' ' -f 1`
 
-sed -i "s/$ip/$1/g" ~/wang/10.AppImage/rss/rss订阅.opml
-echo sed -i "s/$ip/$1/g" ~/wang/10.AppImage/rss/rss订阅.opml
+sed -i "s/$ip/$1/g" $WPath_AppImage/rss/rss订阅.opml
+echo sed -i "s/$ip/$1/g" $WPath_AppImage/rss/rss订阅.opml

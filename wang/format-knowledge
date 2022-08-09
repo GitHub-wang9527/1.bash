@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
-    echo "egrep -R -n knowledge ../../../4.笔记 | ${0##*/}"
+    echo "egrep -R -n "hhh" . | ${0##*/}"
     exit
 fi
 

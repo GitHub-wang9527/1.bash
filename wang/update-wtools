@@ -1,7 +1,7 @@
 #!/bin/bash
 
 workdir=`pwd`
-cd ~/wang/code/git/my/wtools
+cd $WPath_WToolsDir
 
 dpkg-buildpackage -us -uc -sa -b -j6
 sudo dpkg -i ../wtools*.deb

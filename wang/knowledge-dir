@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 获取我的笔记文件夹 排除一些指定文件夹
-wworkdir=$(readlink -f $HOME/wwork | xargs echo)
+wworkdir=$(readlink -f $WPath_WorkDir | xargs echo)
 
 for e in `ls $wworkdir`
 do

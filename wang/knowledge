@@ -5,14 +5,10 @@ if [ $# -eq 0 ];then
     exit
 fi
 
-tmpfile="${HOME}/.cache/knowledgetmp"
+tmpfile=$WPath_ShellTmp
 cat /dev/null > $tmpfile
-# echo "" > $tmpfile                          会产生一个空行
-# echo "" > $tmpfile                          不会产生一个空行/文件置空
-# cat /dev/null > $tmpfile                    文件置空
 
-
-paths=`bash $HOME/wang/wwork/1.bin/1.bash/wang/knowledge-dir`
+paths=`bash $WPath_BashWangDir/knowledge-dir`
 
 for s_dir in $paths ; do
     egrep -R -n -E "$1" "$s_dir" >> $tmpfile
@@ -21,12 +17,14 @@ done
 for arg in $*
 do
     if [ $arg == $1 ];then
+    	# 过滤掉k1
         continue
     fi
 
     echo "$(egrep $arg $tmpfile)" > $tmpfile     # echo egrep的结果 保留换行
 done
 
+# 格式化输出
 if [ $(cat $tmpfile | wc -l) -eq 1 ] ;then
     filename=`cat $tmpfile |cut -d ':' -f 1`
     if [ "$filename" == "" ]; then

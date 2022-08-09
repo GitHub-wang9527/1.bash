@@ -2,5 +2,5 @@
 
 sudo docker restart rsshub                 # 重启rsshub实例的时候 会拉起docker服务
 sleep 1
-~/wang/10.AppImage/rss/fluent-reader/Fluent.Reader.1.0.2.AppImage
+$WPath_AppImage/rss/fluent-reader/Fluent.Reader.1.0.2.AppImage
 

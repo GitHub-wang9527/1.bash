@@ -32,8 +32,8 @@ ln -s ~/wang/code/git/my/1.bash ~/wang/wwork/1.bin/1.bash
 
 # QV2ray 配置
 rm  ~/.config/qv2ray
-ln -s ~/wang/10.AppImage/v2Ray/qv2ray/config ~/.config/qv2ray
+ln -s $WPath_AppImage/v2Ray/qv2ray/config ~/.config/qv2ray
 
 # Fluent.Reader 配置文件
 rm ~/.config/fluent-reader
-ln -s ~/wang/10.AppImage/rss/fluent-reader/config ~/.config/fluent-reader
+ln -s $WPath_AppImage/rss/fluent-reader/config ~/.config/fluent-reader

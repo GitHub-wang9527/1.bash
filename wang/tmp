@@ -2,7 +2,7 @@
 
 # 在wwork目录中创建一个临时文件
 
-path="$HOME/wwork"
+path=$WPath_WorkDir
 if [ ! -d $path ] ;then
     echo "not exist $path"
 fi

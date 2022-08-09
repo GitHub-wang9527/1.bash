@@ -1,11 +1,23 @@
 #!/bin/bash
 
+# 脚本中使用的环境变量
+export WPath_DailyPath="${HOME}/wang/09.工作日志/3.uos/1.日报/2022"
+export WPath_ShellTmp="${HOME}/.cache/wang.tmp"
+export WPath_BashWangDir="$HOME/wang/wwork/1.bin/1.bash/wang"
+export WPath_WorkDir="${HOME}/wang/wwork"
+export WPath_wallpapersDir="${HOME}/wang/20.wallpper-pc"
+export WPath_WToolsDir="${HOME}/wang/code/git/my/wtools"
+export WPath_AppImage="${HOME}/wang/10.AppImage"
+
+# Tips: 
+#	update-ln-file 		中仍然使用了一些路径
+# 	wbashrc_private		中有些路径也需要修改
 source ~/wang/wwork/1.bin/wbashrc_private
 
 alias ll="ls -alh"
 
 alias kvm="sudo virt-manager"
-alias goland="~/wang/10.AppImage/GoLand-2021.1.1/bin/goland.sh >/dev/null 2>&1"
+alias goland="${WPath_AppImage}/GoLand-2021.1.1/bin/goland.sh >/dev/null 2>&1"
 alias goland-wwork="goland ~/wwork/"
 alias wework="uos-open-desktopfile /opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop"
 alias wechat="uos-open-desktopfile /opt/apps/com.qq.weixin.deepin/entries/applications/com.qq.weixin.deepin.desktop"
@@ -25,6 +37,7 @@ alias open-test="gedit ~/wwork/1.bin/1.bash/exapmle/test.sh"
 alias open-weblink="gedit ~/wwork/4.note/weblink-链接.md"
 alias google-bookmarket="cat \"$(find ~/.config -name Bookmarks)\""
 alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show"
+
 
 # 环境变量
 # go env

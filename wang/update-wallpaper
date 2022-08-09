@@ -5,9 +5,9 @@
 IFS_old=$IFS
 IFS=$'\n'
 
-pixpath=~/wang/20.wallpper-pc
+pixpath=$WPath_wallpapersDir
 sysWallpaper=/usr/share/wallpapers/deepin
-sudo rm -f $sysWallpaper/*
+sudo rm -rf $sysWallpaper/*
 for file in `ls $pixpath` ;
 do
     #sudo ln -s $pixpath/$file $sysWallpaper/$file
