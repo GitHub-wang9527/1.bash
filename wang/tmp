@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# 在wwork目录中创建一个临时文件
+# 在制定目录中创建一个临时文件
 
-path=$WPath_WorkDir
-if [ ! -d $path ] ;then
-    echo "not exist $path"
-fi
+path=$WPath_NoteDir/note.tmp
+mkdir -p $path
 
 name="tmp-`env LANG=en_US.UTF-8 date +"%Y%m%d"`-$1.txt"
 echo $path/$name

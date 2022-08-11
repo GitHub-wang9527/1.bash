@@ -5,9 +5,12 @@ export WPath_DailyPath="${HOME}/wang/12.工作日志/3.uos/1.日报/2022"
 export WPath_ShellTmp="${HOME}/.cache/wang.tmp"
 export WPath_BashWangDir="$HOME/wang/01.work-ln/wbash/wang"
 export WPath_WorkDir="${HOME}/wang/01.work-ln"
+export WPath_NoteDir="${HOME}/wang/04.note.dir"
 export WPath_wallpapersDir="${HOME}/wang/21.wallpper-pc"
 export WPath_WToolsDir="${HOME}/wang/03.git-code/my/wtools"
 export WPath_AppImage="${HOME}/wang/20.AppImage"
+export WPath_Private="${HOME}/wang/11.private"
+export WPath_wbash="${HOME}/wang/03.git-code/my/wbash"
 
 # Tips: 
 #	update-ln-file 		中仍然使用了一些路径
@@ -25,7 +28,6 @@ alias qq="uos-open-desktopfile /opt/apps/com.qq.im.deepin/entries/applications/c
 alias sunflower="uos-open-desktopfile /opt/apps/com.oray.sunlogin.client/entries/applications/com.oray.sunlogin.client.desktop"
 
 alias wtools="uos-open-desktopfile /usr/share/applications/wtools.desktop "
-alias note="gedit ~/wang/01.work-ln/note"
 alias todo="gedit ~/wang/01.work-ln/todo.txt"
 alias pms="xdg-open https://pms.uniontech.com/my-bug-assignedTo.html"
 alias oa="xdg-open https://oa.uniontech.com/wui/index.html\?v\=1653016220862\#/\?_key\=np5fj4"
@@ -43,9 +45,9 @@ alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /
 # go env
 export GOPATH=/home/wangbin/go:/usr/share/gocode
 # export GOPROXY=https://goproxy.cn
-export PATH=$PATH:~/wang/01.work-ln/wbash/uos-func
-export PATH=$PATH:~/wang/01.work-ln/wbash/wang
-export PATH=$PATH:~/wang/01.work-ln/wbash/example
+export PATH=$PATH:$WPath_wbash/uos-func
+export PATH=$PATH:$WPath_wbash/wang
+export PATH=$PATH:$WPath_wbash/example
 export PATH=$PATH:~/zwork/bin
 
 # 设置contab编辑器为vim

@@ -5,28 +5,74 @@ if [ "-h" == "$1" ] || [ "" == "$1" ];then
     echo "Example: ${0##*/} /media/wangbin/WB1T"
     exit
 fi
-if [ ! -d "$1" ]; then
-    echo "$1 don't exist"
-    exit
-fi
 
-rm -f ~/disk
-ln -s $1 ~/disk
+function update-disk() {
+    if [ ! -d "$1" ]; then
+        echo "${FUNCNAME[@]} $1 don't exist"
+        exit
+    fi
+    echo "update disk"
 
-# 只有工作机存在的目录
-rm -f ~/zwork ~/vmware ~/workspace;
-if [ -d ~/disk/VMMachine ] ;then
-    ln -s ~/disk/VMMachine ~/vmware
-fi
-if [ -d ~/disk/zwork ] ;then
-    ln -s ~/disk/zwork ~/zwork
-fi
-if [ -d ~/disk/workspace ] ;then
-    ln -s ~/disk/workspace ~/workspace
-fi
+    rm -f ~/disk
+    ln -s $1 ~/disk
+    rm -f ~/wang;
+    ln -s ~/disk/wang/ ~/wang
 
-rm -f ~/wang;
-ln -s ~/disk/wang/ ~/wang
+    # 只有工作机存在的目录
+    rm -f ~/zwork ~/vmware ~/workspace;
+    if [ -d ~/disk/VMMachine ] ;then
+        ln -s ~/disk/VMMachine ~/vmware
+    fi
+    if [ -d ~/disk/workspace ] ;then
+        ln -s ~/disk/workspace ~/workspace
+    fi
+    if [ -d ~/disk/zwork ] ;then
+        ln -s ~/disk/workspace ~/zwork
+    fi
+}
+
+
+# parm1路径中的文件全部创建软链接到 parm2中
+function update-path-ln() {
+    frompath=$1
+    topath=$2
+
+    if [ ! -d "$frompath" ]; then
+        echo "${FUNCNAME[@]} frompath: $frompath don't exist"
+        exit
+    fi
+    if [ ! -d "$topath" ]; then
+        echo "${FUNCNAME[@]} topath: $topath don't exist"
+        exit
+    fi
+
+    for name in `ls $frompath`
+    do
+        rm -f $topath/$name
+        ln -s  $frompath/$name $topath/$name
+    done
+}
+
+# 将文件parm1 链接到路径parm2中
+function update-ln() {
+    pathname=$1
+    topath=$2
+
+    if [ -f "$pathname" ]; then
+        echo "${FUNCNAME[@]} filename: $pathname don't exist"
+        exit
+    fi
+    
+    rm -f $topath/$(echo $pathname | awk -F "/" '{print $NF}')
+    ln -s  $pathname $topath
+}
+
+update-disk $1
+update-path-ln $WPath_NoteDir $WPath_WorkDir
+update-path-ln $WPath_Private $WPath_WorkDir
+
+update-ln $WPath_wbash $WPath_WorkDir
+update-ln $WPath_WorkDir ${HOME}
 
 # QV2ray 配置
 rm  ~/.config/qv2ray
