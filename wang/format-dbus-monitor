@@ -22,11 +22,14 @@ do
         fi
     done
 
-  if [ "$interface" == "com.deepin.api.XEventMonitor" ] || [ "$interface" == "com.deepin.daemon.Gesture" ] ||
-      [ "$interface" == "org.freedesktop.DBus" ] || [ "$interface" == "" ]
-  then
-    continue
-  fi
+	# 过滤掉一些经常出现的接口调用
+    if [ "$interface" == "com.deepin.api.XEventMonitor" ] 
+        || [ "$interface" == "com.deepin.daemon.Gesture" ] 
+        || [ "$interface" == "org.freedesktop.DBus" ] 
+        || [ "$interface" == "" ]
+    then
+        continue
+    fi
 
     if [[ "${interfacesMap[$interface]}" != "$member" ]] ; then
         # 防止一个信号反复的输出 比如 interface=com.deepin.api.XEventMonitor member=CursorMove

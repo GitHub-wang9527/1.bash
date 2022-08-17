@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "" == "$1" ] || [ "-h" == "$1" ] || [ "--h" == "$1" ] || [ "-help" == "$1" ] || [ "--help" == "$1" ];then
+if [ "" == "$1" ] || [ "-h" == "$1" ] || [ "--help" == "$1" ];then
     echo ww-find-pwd "[key]"
     exit
 fi

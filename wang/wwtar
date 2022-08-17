@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO 基本没用过
-
 tarname=$1
 if [ -d $1 ];then
     tarname=${tarname%/*}.tar.gz
