@@ -27,7 +27,7 @@ function update-disk() {
         ln -s ~/disk/workspace ~/workspace
     fi
     if [ -d ~/disk/zwork ] ;then
-        ln -s ~/disk/workspace ~/zwork
+        ln -s ~/disk/zwork ~/zwork
     fi
 }
 
