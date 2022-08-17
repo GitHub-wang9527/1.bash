@@ -1,0 +1,18 @@
+#!/bin/bash
+# 现象: for file in `ls`  会将带空格的文件名，以空格作为截分，分两次（多次）输出。
+#原因：Shell 脚本中有个变量叫 IFS(Internal Field Seprator) ，内部域分隔符。默认是 space, tab, newline 来拆解读入的变量，然后对特殊字符进行处理，最后重新组合赋值给该变量。
+#对策：只需要重置改变量，用完以后记得还原变量。
+IFS_old=$IFS
+IFS=$'\n'
+
+pixpath=$WPath_wallpapersDir
+sysWallpaper=/usr/share/wallpapers/deepin
+sudo rm -rf $sysWallpaper/*
+for file in `ls $pixpath` ;
+do
+    #sudo ln -s $pixpath/$file $sysWallpaper/$file
+    sudo cp $pixpath/$file $sysWallpaper/$file
+done
+
+
+IFS=$IFS_old
