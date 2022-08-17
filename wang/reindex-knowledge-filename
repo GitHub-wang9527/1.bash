@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 重命名当前文件夹中的文本文件
+# 1) 如果是数子开头，并且数字后是 '.'
+#		数字是2位数，跟新 '.' 之前的索引
+#		数字是3位数，跳过
+# 2) 索引大于99，退出脚本
+
+idx=1
+for name in `ls -F | grep -v '/$'`
+do
+	sindex=$(echo $idx | awk '{printf("%02d\n",$0)}')
+
+	if [[ $name =~ ^[0-9][0-9]\. ]];then
+		echo "mv" $name $sindex.${name#*.}
+		mv $name $sindex.${name#*.}
+	elif [[ $name =~ ^[0-9][0-9][0-9]\. ]];then
+		echo "ginore $name"
+		continue
+	else
+		echo "mv" $name $sindex.$name
+		mv $name $sindex.$name
+	fi
+	#echo $idx
+	let idx++
+	
+	if [ $idx -eq 100 ];then
+		tip="File Index is greater than 99, break"
+		echo -e "\033[31m $tip \033[0m"
+		break
+	fi
+done
