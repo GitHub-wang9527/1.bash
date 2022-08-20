@@ -35,7 +35,7 @@ alias oa="xdg-open https://oa.uniontech.com/wui/index.html\?v\=1653016220862\#/\
 alias cd-bin="cd ~/wwork/1.bin/1.bash/"
 alias cd-go-depend="cd /usr/share/gocode/src/github.com/linuxdeepin"
 alias open=dde-open
-alias open-test="gedit ~/wang/01.work-ln/wbash/exapmle/test.sh"
+alias open-test="gedit ~/wang/01.work-ln/wbash/example/test.sh"
 alias open-weblink="gedit ~/wang/01.work-ln/weblink-链接.md"
 alias google-bookmarket="cat \"$(find ~/.config -name Bookmarks)\""
 alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show"
