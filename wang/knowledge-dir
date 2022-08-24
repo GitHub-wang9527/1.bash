@@ -7,9 +7,9 @@ for e in `ls $wworkdir`
 do
     path=$wworkdir/$e
     # 排除文件 保留文件夹
-    if [[ ! -d $path ]];then
-        continue
-    fi
+    # if [[ ! -d $path ]];then
+    #    continue
+    # fi
 
     if [[ $path =~ "zbash" ]] ;then
         continue
