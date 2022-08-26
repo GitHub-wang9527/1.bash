@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# 设置系统缩放比
+
+if [ "-h" == "$1" ] || [ "" == "$1" ];then
+    echo "${0##*/} [scale factor] <-y>"
+    exit 1
+fi
+
+gsettings set com.deepin.xsettings scale-factor $1
+
+function logout(){
+    dbus-send --print-reply --dest=com.deepin.SessionManager /com/deepin/SessionManager com.deepin.SessionManager.ForceLogout 
+}
+
+# 如果参数2为'-y'，则立刻注销，否则弹出提示，手动选择是否注销
+[ "$2" == "-y" ] && logout && exit
+
+echo -e "\n Logout is required for the setting to take effect. \n If you want to log out now, Please input [Y/y]\n"
+read flag
+if [ $flag == "Y" ] || [ $flag == "y" ] ; then
+    logout
+fi
+
