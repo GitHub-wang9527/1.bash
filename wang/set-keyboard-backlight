@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "-h" == "$1" ] ;then
+    echo "${0##*/} [on/off]"
+    exit 1
+fi
+
+if [ "$1" == "off" ];then
+    echo '关闭键盘背光'
+    xset -led named 'Scroll Lock'
+    exit
+fi
+
+# 默认开启
+echo '开启键盘背光'
+xset led named 'Scroll Lock'
+
