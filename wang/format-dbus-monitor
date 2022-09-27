@@ -23,10 +23,10 @@ do
     done
 
 	# 过滤掉一些经常出现的接口调用
-    if [ "$interface" == "com.deepin.api.XEventMonitor" ] 
-        || [ "$interface" == "com.deepin.daemon.Gesture" ] 
-        || [ "$interface" == "org.freedesktop.DBus" ] 
-        || [ "$interface" == "" ]
+    if [ "$interface" == "com.deepin.api.XEventMonitor" ] || 
+        [ "$interface" == "com.deepin.daemon.Gesture" ] || 
+        [ "$interface" == "org.freedesktop.DBus" ] || 
+        [ "$interface" == "" ]
     then
         continue
     fi

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# 在非交互式模式下alias扩展功能默认是关闭的，在wbahsrc中无法使用shopt
+function screensaver(){
+    dbus-send --session --print-reply --dest=com.deepin.ScreenSaver /com/deepin/ScreenSaver com.deepin.ScreenSaver.Start
+}
+function lock(){
+     dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show
+}
+
+
+# lock
+
+for((;;))
+do
+    # 屏保界面不显示 一段时间后deepin-screensaver进程才退出
+    if [ "$(pidof deepin-screensaver)" == "" ];then
+        echo "not exist"
+        screensaver
+        continue
+    fi
+
+    echo "exist"
+    sleep 1
+done
+

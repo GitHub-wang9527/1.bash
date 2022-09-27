@@ -10,6 +10,6 @@ do
 		continue
 	fi
 	echo "cp $pathname $sysWallpaper/"
-    sudo cp "'$pathname'" $sysWallpaper/
+    sudo cp "$pathname" $sysWallpaper/
 done
 
