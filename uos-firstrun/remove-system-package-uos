@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ddeVersion=""
+dpkg -l |grep "  dde" | tr -s ' ' |while read -r line
+do
+	if [[ $(echo $line | cut -d " " -f 2) == "dde-dock" ]];then
+		ddeVersion=$(echo $line | cut -d " " -f 3)
+	fi
+done
+
+# 已经安装了dde包 并且不是我自己打的包
+if [ "$ddeVersion" != "9999.05.16+pro" ] && [ "$ddeVersion" != "" ];then
+	echo "dde version is $ddeVersion, please install my dde"
+	exit
+fi
+
+sudo dpkg --purge deepin-defender uos-service-support deepin-user-experience-daemon deepin-wakeonlan
+sudo dpkg --purge uos-autorun uos-browser-plugin org.deepin.scanner deepin-devicemanager \
+    deepin-album dde-grand-search deepin-draw deepin-mail
+sudo dpkg --purge uos-remote-assistance deepin-mobile-assistant dde-calendar deepin-system-monitor
+sudo dpkg --purge deepin-home-appstore-daemon deepin-app-store deepin-deepinid-client
+#sudo dpkg --purge deepin-aiassistant
+sudo dpkg --purge deepin-image-viewer deepin-camera deepin-clone
+
+sudo apt remove -y uengine uengine-android-image uengine-modules-dkms
+
+sudo apt -y autoremove

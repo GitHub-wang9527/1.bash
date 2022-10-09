@@ -80,4 +80,4 @@ ln -s $WPath_AppImage/v2Ray/qv2ray/config ~/.config/qv2ray
 
 # Fluent.Reader 配置文件
 rm ~/.config/fluent-reader
-ln -s $WPath_AppImage/rss/fluent-reader/config ~/.config/fluent-reader
+ln -s ~/wang/31.book-software/config/config.fluent-reader ~/.config/fluent-reader

@@ -6,22 +6,20 @@ export WPath_ShellTmp="${HOME}/.cache/wang.tmp"
 export WPath_BashWangDir="$HOME/wang/01.work-ln/wbash/wang"
 export WPath_WorkDir="${HOME}/wang/01.work-ln"
 export WPath_NoteDir="${HOME}/wang/04.note.dir"
-export WPath_wallpapersDir="${HOME}/wang/21.wallpper-pc"
-export WPath_WToolsDir="${HOME}/wang/03.git-code/my/wtools"
-export WPath_AppImage="${HOME}/wang/20.AppImage"
+export WPath_wallpapersDir="${HOME}/wang/30.file/20.wallpper-pc"
+export WPath_WToolsDir="${HOME}/wang/02.code/git-my/wtools"
+export WPath_AppImage="${HOME}/wang/31.book-software/AppImage"
 export WPath_Private="${HOME}/wang/11.private"
-export WPath_wbash="${HOME}/wang/03.git-code/my/wbash"
+export WPath_wbash="${HOME}/wang/02.code/git-my/wbash"
 
 # Tips: 
 #	update-ln-file 		中仍然使用了一些路径
 # 	wbashrc_private		中有些路径也需要修改
-source ~/wang/11.private/wbashrc_private
+source ~/wang/30.file/wbashrc_private
 
 alias ll="ls -alh"
 
 alias kvm="sudo virt-manager"
-alias goland="${WPath_AppImage}/GoLand-2021.1.1/bin/goland.sh >/dev/null 2>&1"
-alias goland-work="goland ~/01.work-ln/"
 alias wework="uos-open-desktopfile /opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop"
 alias wechat="uos-open-desktopfile /opt/apps/com.qq.weixin.deepin/entries/applications/com.qq.weixin.deepin.desktop"
 alias qq="uos-open-desktopfile /opt/apps/com.qq.im.deepin/entries/applications/com.qq.im.deepin.desktop"
@@ -29,17 +27,12 @@ alias sunflower="uos-open-desktopfile /opt/apps/com.oray.sunlogin.client/entries
 
 alias wtools="uos-open-desktopfile /usr/share/applications/wtools.desktop "
 alias todo="gedit ~/wang/01.work-ln/todo.txt"
-alias pms="xdg-open https://pms.uniontech.com/my-bug-assignedTo.html"
-alias oa="xdg-open https://oa.uniontech.com/wui/index.html\?v\=1653016220862\#/\?_key\=np5fj4"
 
-alias cd-bin="cd ~/wwork/1.bin/1.bash/"
-alias cd-go-depend="cd /usr/share/gocode/src/github.com/linuxdeepin"
-alias open=dde-open
+alias adjust-brightness="xrandr --output HDMI-2 --brightness 0.6"
+alias open=xdg-open
 alias open-test="gedit ~/wang/01.work-ln/wbash/example/test.sh"
 alias open-weblink="gedit ~/wang/01.work-ln/weblink-链接.md"
-alias google-bookmarket="cat \"$(find ~/.config -name Bookmarks)\""
-alias lock=" dbus-send --session --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show"
-
+alias google-bookmarket="cat \"$(find ~/.config -name Bookmarks)\" | grep -v sync_metadata"
 
 # 环境变量
 # go env

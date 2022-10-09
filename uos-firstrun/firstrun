@@ -1,0 +1,20 @@
+#!/bin/bash
+
+bashrc="$HOME/wang/02.code/git-my/wbash/wbashrc"
+updatebash="$HOME/wang/02.code/git-my/wbash/wang/update-bashrc"
+
+bash $updatebash "source $bashrc" ~/.bashrc
+bash $updatebash "source $bashrc" ~/.zshrc
+
+gsettings set com.deepin.dde.dock display-mode "efficient"      # "fashion"   "efficient"
+gsettings set com.deepin.dde.dock position "left"               # "top" 或 "bottom" 或 "left" 或 "right"
+
+uos-set-no-password true
+uos-set-auto-login true
+uos-set-network-proxy true
+sudo update-rc.d ssh enable			#设置开机启动ssh
+
+echo 'TODO '
+echo -e "\033[31m *** update-ln-file [pc/umate] ***  \033[0m"
+echo '安装卸载软件'
+echo '移除驻留'
